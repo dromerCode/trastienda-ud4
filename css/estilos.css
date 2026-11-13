@@ -34,67 +34,72 @@
   --sombra: 0 1px 2px rgb(31 36 48 / 0.06), 0 4px 12px rgb(31 36 48 / 0.04);
 }
 
-/* 2. Reset mínimo --------------------------------------------------------- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* Orden de las capas: lo que va después gana, aunque sea menos específico.
+   Lo que está fuera de cualquier capa (el resto del archivo) gana a todas. */
+@layer base, components, utilities;
 
-body,
-h1,
-h2,
-h3,
-p,
-ul,
-dl,
-dd,
-figure {
-  margin: 0;
-}
+@layer base {
+  /* 2. Reset mínimo ------------------------------------------------------- */
+  /* :where() tiene especificidad 0, así cualquier regla lo puede pisar */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-ul {
-  padding: 0;
-  list-style: none;
-}
+  :where(body, h1, h2, h3, p, ul, dl, dd, figure) {
+    margin: 0;
+  }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+  :where(ul) {
+    padding: 0;
+    list-style: none;
+  }
 
-/* 3. Tipografía y color base --------------------------------------------- */
-body {
-  font-family: var(--fuente-texto);
-  font-size: var(--texto-md);
-  line-height: 1.55;
-  color: var(--color-tinta);
-  background-color: var(--color-fondo);
-  /* Deja hueco para la barra inferior fija */
-  padding-block-end: 5.5rem;
-}
+  :where(img) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
 
-h1,
-h2,
-h3 {
-  font-family: var(--fuente-titulo);
-  font-weight: 700;
-  line-height: 1.2;
-  text-wrap: balance;
-}
+  /* Los botones recuperan la letra del navegador y no la Georgia de los
+     títulos. Como está en la capa base, .boton-icono (sin capa) le gana y
+     mantiene su font-size aunque button[aria-label] sea más específico. */
+  button[aria-label] {
+    font: revert;
+  }
 
-h1 {
-  font-size: var(--texto-xl);
-  letter-spacing: -0.01em;
-}
+  /* 3. Tipografía y color base -------------------------------------------- */
+  /* color y font-* se heredan: con ponerlas en body llegan a todo */
+  body {
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-md);
+    line-height: 1.55;
+    color: var(--color-tinta);
+    background-color: var(--color-fondo);
+    /* Deja hueco para la barra inferior fija */
+    padding-block-end: 5.5rem;
+  }
 
-h2 {
-  font-size: var(--texto-lg);
-}
+  :where(h1, h2, h3) {
+    font-family: var(--fuente-titulo);
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
 
-h3 {
-  font-size: var(--texto-md);
+  h1 {
+    font-size: var(--texto-xl);
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: var(--texto-lg);
+  }
+
+  h3 {
+    font-size: var(--texto-md);
+  }
 }
 
 /* 4. Enlaces ------------------------------------------------------------- */
@@ -127,16 +132,18 @@ a:hover {
 }
 
 /* Contenido solo para lectores de pantalla */
-.visualmente-oculto {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
+@layer utilities {
+  .visualmente-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 /* Foco siempre visible: requisito de accesibilidad */
@@ -152,15 +159,18 @@ a:hover {
   justify-content: space-between;
   gap: 0.75rem;
   padding: 0.875rem 1rem;
+  color: var(--color-tinta);
   background-color: var(--color-superficie);
   border-block-end: 1px solid var(--color-borde);
 }
 
+/* El logo es un enlace: con inherit coge el color del header y no el azul
+   de "a". .cabecera__marca (0,0,1,0) gana a a (0,0,0,1). */
 .cabecera__marca {
   font-family: var(--fuente-titulo);
   font-size: var(--texto-lg);
   font-weight: 700;
-  color: var(--color-tinta);
+  color: inherit;
   letter-spacing: -0.01em;
 }
 
@@ -473,7 +483,10 @@ nav a:not([aria-current="page"]) {
   color: var(--color-tinta-suave);
 }
 
-nav a:hover {
+/* Sesión 3: antes era nav a:hover (0,0,1,2), que empataba con
+   nav a[aria-current="page"] (0,0,1,2) y, al ir después, ganaba: la pestaña
+   activa se ponía gris oscuro con el ratón. Ahora solo afecta a las demás. */
+nav a:not([aria-current="page"]):hover {
   color: var(--color-tinta);
 }
 
@@ -487,19 +500,22 @@ h2 + .card {
   border-top: 3px solid var(--color-primario);
 }
 
-/* Badges */
-.badge {
-  padding: 0.125rem 0.5rem;
-  font-size: var(--texto-xs);
-  font-weight: 600;
-  color: var(--color-primario-oscuro);
-  background-color: var(--color-primario-suave);
-  border-radius: 999px;
-}
+/* Badges: van en la capa components, así cualquier regla sin capa los
+   puede ajustar sin subir la especificidad */
+@layer components {
+  .badge {
+    padding: 0.125rem 0.5rem;
+    font-size: var(--texto-xs);
+    font-weight: 600;
+    color: var(--color-primario-oscuro);
+    background-color: var(--color-primario-suave);
+    border-radius: 999px;
+  }
 
-/* Si no tiene texto, no se muestra */
-.badge:empty {
-  display: none;
+  /* Si no tiene texto, no se muestra */
+  .badge:empty {
+    display: none;
+  }
 }
 
 /* Tarjetas que tienen un badge con texto */
@@ -514,3 +530,19 @@ button[aria-label] {
 
 /* En la consola: $$('article:has(.badge:not(:empty))') devuelve 1 elemento
    (El silencio de la ciudad blanca). El badge de Todo arde está vacío. */
+
+/* ==========================================================================
+   Sesión 3 · Cascada, especificidad y herencia
+   ========================================================================== */
+
+/* Duelos que hay en esta hoja:
+   - .barra__enlace (0,0,1,0) pierde contra nav a:not([aria-current="page"])
+     (0,0,1,2), por eso el gris de la barra viene de la regla de la sesión 2.
+   - .barra__enlace[aria-current="page"] (0,0,2,0) gana a
+     nav a[aria-current="page"] (0,0,1,2): las dos ponen el mismo color.
+   - No hay ningún #id ni !important para dar estilos. */
+
+/* El precio de la tarjeta hereda el color del texto de la tarjeta */
+.libro__precio {
+  color: inherit;
+}
