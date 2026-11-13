@@ -457,3 +457,60 @@ main > h1 {
 .barra__enlace[aria-current="page"] {
   color: var(--color-primario);
 }
+
+/* ==========================================================================
+   Sesión 2 · Selectores
+   ========================================================================== */
+
+/* Pestaña activa: la marca el HTML con aria-current, sin clase .activo */
+nav a[aria-current="page"] {
+  color: var(--color-primario);
+  font-weight: 700;
+}
+
+/* Resto de pestañas en gris */
+nav a:not([aria-current="page"]) {
+  color: var(--color-tinta-suave);
+}
+
+nav a:hover {
+  color: var(--color-tinta);
+}
+
+nav a:focus-visible {
+  outline: 2px solid var(--color-primario);
+  outline-offset: -4px;
+}
+
+/* Primera tarjeta justo después del título de la sección */
+h2 + .card {
+  border-top: 3px solid var(--color-primario);
+}
+
+/* Badges */
+.badge {
+  padding: 0.125rem 0.5rem;
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  color: var(--color-primario-oscuro);
+  background-color: var(--color-primario-suave);
+  border-radius: 999px;
+}
+
+/* Si no tiene texto, no se muestra */
+.badge:empty {
+  display: none;
+}
+
+/* Tarjetas que tienen un badge con texto */
+article:has(.badge:not(:empty)) {
+  border-color: var(--color-primario);
+}
+
+/* Botones de solo icono (los que llevan aria-label) */
+button[aria-label] {
+  cursor: pointer;
+}
+
+/* En la consola: $$('article:has(.badge:not(:empty))') devuelve 1 elemento
+   (El silencio de la ciudad blanca). El badge de Todo arde está vacío. */
