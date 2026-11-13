@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Trastienda: librería de novela negra y thriller. Novedades y libros recomendados.">
+  <title>La Trastienda · Novela negra y thriller</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- Cabecera fija: marca + acciones de la pantalla -->
+  <header class="cabecera">
+    <a class="cabecera__marca" href="index.html">La Trastienda</a>
+
+    <div class="cabecera__acciones">
+      <!-- Botones de solo icono: necesitan aria-label para los lectores de pantalla -->
+      <button class="boton-icono" type="button" aria-label="Buscar">🔍</button>
+      <button class="boton-icono" type="button" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <h1>Novela negra y thriller</h1>
+
+    <section class="seccion" aria-labelledby="novedades">
+      <h2 id="novedades">Novedades</h2>
+
+      <article class="libro">
+        <img class="libro__portada" src="img/portada-la-paciente-silenciosa.svg" alt="" width="88" height="132">
+        <div class="libro__datos">
+          <h3 class="libro__titulo"><a href="detalle.html">La paciente silenciosa</a></h3>
+          <p class="libro__autor">Alex Michaelides</p>
+          <p class="libro__precio">19,90 €</p>
+        </div>
+      </article>
+
+      <article class="libro">
+        <img class="libro__portada" src="img/portada-la-sombra-del-viento.svg" alt="" width="88" height="132">
+        <div class="libro__datos">
+          <h3 class="libro__titulo"><a href="detalle.html">La sombra del viento</a></h3>
+          <p class="libro__autor">Carlos Ruiz Zafón</p>
+          <p class="libro__precio">21,90 €</p>
+        </div>
+      </article>
+
+      <article class="libro">
+        <img class="libro__portada" src="img/portada-el-problema-final.svg" alt="" width="88" height="132">
+        <div class="libro__datos">
+          <h3 class="libro__titulo"><a href="detalle.html">El problema final</a></h3>
+          <p class="libro__autor">Arturo Pérez-Reverte</p>
+          <p class="libro__precio">22,90 €</p>
+        </div>
+      </article>
+
+      <article class="libro">
+        <img class="libro__portada" src="img/portada-reina-roja.svg" alt="" width="88" height="132">
+        <div class="libro__datos">
+          <h3 class="libro__titulo"><a href="detalle.html">Reina roja</a></h3>
+          <p class="libro__autor">Juan Gómez-Jurado</p>
+          <p class="libro__precio">19,90 €</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="seccion" aria-labelledby="recomendados">
+      <h2 id="recomendados">Recomendados</h2>
+
+      <article class="libro">
+        <img class="libro__portada" src="img/portada-el-silencio-de-la-ciudad-blanca.svg" alt="" width="88" height="132">
+        <div class="libro__datos">
+          <h3 class="libro__titulo"><a href="detalle.html">El silencio de la ciudad blanca</a></h3>
+          <p class="libro__autor">Eva García Sáenz de Urturi</p>
+          <p class="libro__precio">20,90 €</p>
+          <button class="boton boton--primario" type="button">Añadir a la cesta</button>
+        </div>
+      </article>
+
+      <article class="libro">
+        <img class="libro__portada" src="img/portada-los-ritos-del-agua.svg" alt="" width="88" height="132">
+        <div class="libro__datos">
+          <h3 class="libro__titulo"><a href="detalle.html">Los ritos del agua</a></h3>
+          <p class="libro__autor">Eva García Sáenz de Urturi</p>
+          <p class="libro__precio">20,90 €</p>
+          <button class="boton boton--primario" type="button">Añadir a la cesta</button>
+        </div>
+      </article>
+
+      <article class="libro">
+        <img class="libro__portada" src="img/portada-todo-arde.svg" alt="" width="88" height="132">
+        <div class="libro__datos">
+          <h3 class="libro__titulo"><a href="detalle.html">Todo arde</a></h3>
+          <p class="libro__autor">Juan Gómez-Jurado</p>
+          <p class="libro__precio">21,90 €</p>
+          <button class="boton boton--primario" type="button">Añadir a la cesta</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <nav class="barra" aria-label="Secciones de la app">
+    <ul class="barra__lista">
+      <li><a class="barra__enlace" href="index.html" aria-current="page">Inicio</a></li>
+      <li><a class="barra__enlace" href="explorar.html">Explorar</a></li>
+      <li><a class="barra__enlace" href="carrito.html">Cesta</a></li>
+      <li><a class="barra__enlace" href="perfil.html">Perfil</a></li>
+    </ul>
+  </nav>
+</body>
+</html>

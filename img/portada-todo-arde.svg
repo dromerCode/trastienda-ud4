@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300" role="img" aria-labelledby="t6">
+  <title id="t6">Portada de Todo arde</title>
+  <defs>
+    <linearGradient id="g6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6b2d0e"/>
+      <stop offset="1" stop-color="#9c4a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="300" fill="url(#g6)"/>
+  <rect x="12" y="12" width="176" height="276" fill="none" stroke="#ffffff" stroke-opacity=".35"/>
+  <g fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="100" y="150" font-size="20" letter-spacing=".5">Todo arde</text>
+  </g>
+  <text x="100" y="266" fill="#ffffff" fill-opacity=".8" font-family="Helvetica, Arial, sans-serif" font-size="8" text-anchor="middle">Juan Gómez-Jurado</text>
+</svg>

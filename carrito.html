@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Trastienda: revisa los artículos de tu cesta y tramita el pedido.">
+  <title>Mi cesta · La Trastienda</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <header class="cabecera cabecera--cesta">
+    <!-- Volver es un enlace: me lleva a otra pantalla -->
+    <a class="boton-icono" href="index.html" aria-label="Volver a Inicio">←</a>
+    <h1 class="cabecera__titulo">Mi cesta <span class="cabecera__cuenta">2 artículos</span></h1>
+  </header>
+
+  <main id="contenido">
+    <section class="seccion" aria-labelledby="articulos">
+      <h2 id="articulos" class="visualmente-oculto">Artículos en la cesta</h2>
+
+      <ul class="cesta">
+        <li>
+          <article class="linea">
+            <img class="linea__portada" src="img/portada-la-paciente-silenciosa.svg" alt="" width="64" height="96">
+            <div class="linea__datos">
+              <h3 class="linea__titulo"><a href="detalle.html">La paciente silenciosa</a></h3>
+              <p class="linea__meta">Alex Michaelides · Tapa dura</p>
+
+              <div class="cantidad">
+                <button class="cantidad__boton" type="button"
+                        aria-label="Quitar un ejemplar de La paciente silenciosa">−</button>
+                <span class="cantidad__valor">1</span>
+                <button class="cantidad__boton" type="button"
+                        aria-label="Añadir un ejemplar de La paciente silenciosa">+</button>
+              </div>
+            </div>
+            <p class="linea__precio">19,90 €</p>
+          </article>
+        </li>
+
+        <li>
+          <article class="linea">
+            <img class="linea__portada" src="img/portada-el-silencio-de-la-ciudad-blanca.svg" alt="" width="64" height="96">
+            <div class="linea__datos">
+              <h3 class="linea__titulo"><a href="detalle.html">El silencio de la ciudad blanca</a></h3>
+              <p class="linea__meta">Eva García Sáenz de Urturi · Ebook</p>
+
+              <div class="cantidad">
+                <button class="cantidad__boton" type="button"
+                        aria-label="Quitar un ejemplar de El silencio de la ciudad blanca">−</button>
+                <span class="cantidad__valor">1</span>
+                <button class="cantidad__boton" type="button"
+                        aria-label="Añadir un ejemplar de El silencio de la ciudad blanca">+</button>
+              </div>
+            </div>
+            <p class="linea__precio">9,99 €</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resumen" aria-labelledby="resumen">
+      <h2 id="resumen">Resumen</h2>
+
+      <!-- <dl>: lista de pares concepto / valor -->
+      <dl class="resumen__lista">
+        <div class="resumen__fila">
+          <dt>Subtotal</dt>
+          <dd>29,89 €</dd>
+        </div>
+        <div class="resumen__fila">
+          <dt>Envío</dt>
+          <dd>Gratis</dd>
+        </div>
+        <div class="resumen__fila resumen__fila--total">
+          <dt>Total</dt>
+          <dd>29,89 €</dd>
+        </div>
+      </dl>
+
+      <!-- Tramitar pedido no navega: hace algo en esta pantalla, así que es un botón -->
+      <button class="boton boton--primario boton--bloque" type="button">Tramitar pedido</button>
+    </section>
+  </main>
+
+  <nav class="barra" aria-label="Secciones de la app">
+    <ul class="barra__lista">
+      <li><a class="barra__enlace" href="index.html">Inicio</a></li>
+      <li><a class="barra__enlace" href="explorar.html">Explorar</a></li>
+      <li><a class="barra__enlace" href="carrito.html" aria-current="page">Cesta</a></li>
+      <li><a class="barra__enlace" href="perfil.html">Perfil</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
