@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MangaDō: tienda de manga. Novedades y recomendados.">
+  <title>MangaDō · Tienda de manga</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <a class="logo" href="index.html">
+      <span class="logo__icono" aria-hidden="true">M</span>
+      MangaDō
+    </a>
+
+    <div class="cabecera__acciones">
+      <button class="boton-icono" type="button" aria-label="Buscar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button class="boton-icono" type="button" aria-label="Abrir menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="visualmente-oculto">MangaDō, tienda de manga</h1>
+
+    <section class="seccion" aria-labelledby="novedades">
+      <h2 id="novedades">Novedades</h2>
+
+      <ul class="carrusel">
+        <li>
+          <article class="novedad">
+            <img src="img/portada-dandadan.svg" alt="" width="140" height="196">
+            <span class="badge badge--nuevo">Nuevo</span>
+            <h3 class="novedad__titulo"><a href="detalle.html">Dandadan 14</a></h3>
+            <p class="novedad__autor">Yukinobu Tatsu</p>
+            <p class="novedad__precio">8,50 €</p>
+          </article>
+        </li>
+        <li>
+          <article class="novedad">
+            <img src="img/portada-chainsaw-man.svg" alt="" width="140" height="196">
+            <span class="badge"></span>
+            <h3 class="novedad__titulo"><a href="detalle.html">Chainsaw Man 18</a></h3>
+            <p class="novedad__autor">Tatsuki Fujimoto</p>
+            <p class="novedad__precio">8,50 €</p>
+          </article>
+        </li>
+        <li>
+          <article class="novedad">
+            <img src="img/portada-frieren.svg" alt="" width="140" height="196">
+            <span class="badge"></span>
+            <h3 class="novedad__titulo"><a href="detalle.html">Frieren 13</a></h3>
+            <p class="novedad__autor">Kanehito Yamada</p>
+            <p class="novedad__precio">8,95 €</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="seccion" aria-labelledby="recomendados">
+      <h2 id="recomendados">Recomendados para ti</h2>
+
+      <article class="card">
+        <img class="card__portada" src="img/portada-berserk.svg" alt="" width="72" height="100">
+        <div class="card__datos">
+          <h3 class="card__titulo"><a href="detalle.html">Berserk Maximum 1</a></h3>
+          <p class="card__autor">Kentaro Miura</p>
+          <p class="card__precio">18,95 €</p>
+        </div>
+        <button class="card__favorito" type="button" aria-label="Añadir Berserk Maximum 1 a favoritos">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
+        </button>
+        <button class="card__boton" type="button">Añadir</button>
+      </article>
+
+      <article class="card">
+        <img class="card__portada" src="img/portada-vagabond.svg" alt="" width="72" height="100">
+        <div class="card__datos">
+          <h3 class="card__titulo"><a href="detalle.html">Vagabond Integral 1</a></h3>
+          <p class="card__autor">Takehiko Inoue</p>
+          <p class="card__precio">22,00 €</p>
+        </div>
+        <button class="card__favorito" type="button" aria-label="Añadir Vagabond Integral 1 a favoritos">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
+        </button>
+        <button class="card__boton" type="button">Añadir</button>
+      </article>
+    </section>
+  </main>
+
+  <nav aria-label="Secciones de la app">
+    <ul>
+      <li><a href="index.html" aria-current="page">Inicio</a></li>
+      <li><a href="explorar.html">Explorar</a></li>
+      <li><a href="carrito.html">Cesta</a></li>
+      <li><a href="perfil.html">Perfil</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
