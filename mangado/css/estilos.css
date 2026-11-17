@@ -1,7 +1,8 @@
 /* ==========================================================================
    MangaDō · proyecto personal (Home)
    Sesión 4: tokens del Figma en :root, oklch() y anidamiento nativo.
-   Mobile-first a 393 px.
+   Sesión 5: fuentes, escala tipográfica en rem, 65ch y 100dvh.
+   Mobile-first a 393 px. Los px solo quedan en bordes, sombras y radios.
    ========================================================================== */
 
 :root {
@@ -49,6 +50,18 @@
   --brand-hover:   var(--color-primary-600);
   --brand-text:    var(--color-primary-600); /* precios: el 500 puro cansa en texto */
 
+  /* --- TIPOGRAFÍA (Figma: en MangaDō todo es Inter) --- */
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+
+  --text-xs:   0.75rem;   /* Caption    12 px */
+  --text-sm:   0.875rem;  /* Body Small 14 px */
+  --text-base: 1rem;      /* Body       16 px */
+  --text-lg:   1.125rem;  /* H3         18 px */
+  --text-xl:   1.25rem;   /* H2         20 px */
+  --text-2xl:  1.5rem;    /* H1         24 px */
+  --text-3xl:  1.875rem;  /* Display    30 px */
+
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -77,16 +90,55 @@ img {
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5; /* sin unidad: cada hijo lo multiplica por su tamaño */
+  color: var(--color-neutral-900);
   background-color: var(--bg-page);
+}
+
+/* Contenedor de la app: ocupa la pantalla del móvil sin que las barras del
+   navegador tapen nada (100vh fallaba en móviles) */
+.app {
+  min-height: 100dvh;
   padding-bottom: 4.5rem; /* hueco para la barra inferior */
 }
 
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Estilos de texto del Figma pasados a CSS */
+h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
 h2 {
-  font-size: 1.5rem;
+  font-size: var(--text-2xl); /* en el Figma los títulos de sección van a 24 */
+  font-weight: 700;
   line-height: 1.3;
+}
+
+h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* Párrafos explicativos: líneas de lectura cómoda */
+.texto {
+  max-width: 65ch;
+  margin-bottom: 0.75rem;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
 .visualmente-oculto {
@@ -116,7 +168,7 @@ h2 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1.25rem;
+    font-size: var(--text-xl);
     font-weight: 700;
     color: var(--text-main);
     text-decoration: none;
@@ -140,8 +192,8 @@ h2 {
 .boton-icono {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 2.75rem;  /* 44 px: área táctil mínima */
+  height: 2.75rem;
   color: var(--text-main);
   background: none;
   border: 0;
@@ -172,7 +224,7 @@ h2 {
 
   > li {
     flex: none;
-    width: 140px;
+    width: 8.75rem; /* 140 px */
   }
 }
 
@@ -192,7 +244,7 @@ h2 {
 
 .novedad__titulo {
   margin-top: 0.5rem;
-  font-size: 1rem;
+  font-size: var(--text-base);
 
   a {
     color: var(--text-main);
@@ -201,7 +253,7 @@ h2 {
 }
 
 .novedad__autor {
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   color: var(--text-muted);
 }
 
@@ -216,9 +268,10 @@ h2 {
   --badge-bg: var(--color-primary-50);
   --badge-color: var(--color-primary-700);
 
-  padding: 0.125rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  padding: 0.125em 0.5em; /* em: el relleno escala con el texto del badge */
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.3;
   color: var(--badge-color);
   background-color: var(--badge-bg);
   border-radius: var(--radius-sm);
@@ -253,12 +306,12 @@ h2 {
 
   .card__portada {
     grid-row: span 2;
-    width: 72px;
+    width: 4.5rem;
     border-radius: var(--radius-sm);
   }
 
   .card__titulo {
-    font-size: 1rem;
+    font-size: var(--text-base);
 
     a {
       color: var(--text-main);
@@ -267,7 +320,7 @@ h2 {
   }
 
   .card__autor {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
   }
 
@@ -293,9 +346,9 @@ h2 {
   .card__boton {
     grid-column: 3;
     align-self: end;
-    padding: 0.5rem 1rem;
+    padding: 0.5em 1em; /* em: si cambia el tamaño, el relleno le sigue */
     font: inherit;
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     color: #fff;
     background-color: var(--brand);
     border: 0;
@@ -330,7 +383,7 @@ nav {
   a {
     display: block;
     padding: 1rem 0;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     text-align: center;
     color: var(--text-muted);
     text-decoration: none;

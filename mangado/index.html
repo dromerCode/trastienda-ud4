@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="MangaDō: tienda de manga. Novedades y recomendados.">
   <title>MangaDō · Tienda de manga</title>
+  <!-- Inter desde Google Fonts: preconnect + display=swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+  <div class="app">
   <header class="cabecera">
     <a class="logo" href="index.html">
       <span class="logo__icono" aria-hidden="true">M</span>
@@ -29,6 +34,7 @@
 
     <section class="seccion" aria-labelledby="novedades">
       <h2 id="novedades">Novedades</h2>
+      <p class="texto">Los tomos que han llegado esta semana a la tienda. Si te falta alguno de tu colección, resérvalo antes de que se agote.</p>
 
       <ul class="carrusel">
         <li>
@@ -100,5 +106,6 @@
       <li><a href="perfil.html">Perfil</a></li>
     </ul>
   </nav>
+  </div>
 </body>
 </html>
